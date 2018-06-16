@@ -11,14 +11,14 @@ func ParseCityList(contents []byte)(engine.ParserResult) {
 	re := regexp.MustCompile(citylistRe)
 	matches := re.FindAllSubmatch(contents, -1)
 	result := engine.ParserResult{}
-	limit:=3
+	//limit:=3
 	for _, m := range matches {
 		result.Items = append(result.Items, "City "+string(m[2]))
 		result.Request = append(result.Request, engine.Request{Url: string(m[1]), ParserFunc:ParseCity})
-		limit--
-		if limit==0{
-			break
-		}
+		//limit--
+		//if limit==0{
+		//	break
+		//}
 	}
 
 	return result
